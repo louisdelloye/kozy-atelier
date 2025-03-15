@@ -21,6 +21,23 @@
   <!-- End - Fonts -->
 </head>
 
+<script>
+  function sendEmail(event) {
+      event.preventDefault(); // Prevents default form submission
+  
+      // Get form values
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+  
+      // Encode values to be URL safe
+      const mailtoLink = `mailto:olga@burzynski.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  
+      // Open the mail client
+      window.location.href = mailtoLink;
+  }
+</script>
+
 <body
   class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
   <!-- Navbar -->
@@ -82,7 +99,7 @@
           <h1 class="text-4xl pt-10 pb-8"><b>CONTACT</b></h1>
         
           <!-- ! IMPORTANT TO UPDATE WITH HER EMAIL -->
-          <form class="space-y-8" action="mailto:olga@burzynski.net"> 
+          <form class="space-y-8" onsubmit="sendEmail(event)">
             <div>
               <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
                 email</label>
